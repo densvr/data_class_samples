@@ -29,7 +29,7 @@ data class OfferViewModel(
     val payload: FeedItem.Offer
 ): IComparableItem {
 
-    override fun id(): Any = OfferViewModel::javaClass
+    override fun id(): Any = title
 
     override fun content(): Any = this
 }

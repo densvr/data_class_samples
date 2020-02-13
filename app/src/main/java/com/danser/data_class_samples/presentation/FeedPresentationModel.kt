@@ -22,19 +22,15 @@ class FeedPresentationModel(
         update()
     }
 
-    private fun onOfferClicked(offer: FeedItem.Offer) {
+    fun onOfferClicked(offer: FeedItem.Offer) {
         //TODO
     }
 
-    private fun onAdvertClicked(advert: FeedItem.Advert) {
-        //TODO
-    }
-
-    private fun onHideAdvertClicked(advert: FeedItem.Advert) {
+    fun onHideAdvertClicked(advert: FeedItem.Advert) {
         //remove advert from the list
         update {
             copy(
-                items = items.filter { item ->
+                items = items.filterNot { item ->
                     item is FeedItem.Advert && item.id == advert.id
                 }
             )

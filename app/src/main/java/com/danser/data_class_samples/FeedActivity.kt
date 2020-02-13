@@ -9,6 +9,7 @@ import com.danser.data_class_samples.domain.FeedInteractor
 import com.danser.data_class_samples.presentation.FeedPresentationModel
 import com.danser.data_class_samples.presentation.FeedViewModel
 import com.danser.data_class_samples.view.adapter.AdvertAdapter
+import com.danser.data_class_samples.view.adapter.DividerAdapter
 import com.danser.data_class_samples.view.adapter.OfferAdapter
 import com.example.delegateadapter.delegate.diff.DiffUtilCompositeAdapter
 import kotlinx.android.synthetic.main.activity_feed.*
@@ -45,7 +46,8 @@ class FeedActivity : AppCompatActivity() {
     }
 
     private fun getDiffAdapter(): DiffUtilCompositeAdapter = DiffUtilCompositeAdapter.Builder()
-        .add(OfferAdapter {})
-        .add(AdvertAdapter {})
+        .add(OfferAdapter(presentation::onOfferClicked))
+        .add(AdvertAdapter(presentation::onHideAdvertClicked))
+        .add(DividerAdapter)
         .build()
 }

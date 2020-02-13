@@ -17,10 +17,10 @@ class AdvertAdapter(
     }
 
     override fun isForViewType(items: MutableList<*>, position: Int): Boolean =
-        items[position] is OfferViewModel
+        items[position] is AdvertViewModel
 }
 
-class AdvertViewModel(
+data class AdvertViewModel(
     val payload: FeedItem.Advert
 ) : IComparableItem {
 

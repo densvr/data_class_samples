@@ -9,6 +9,12 @@ class FeedInteractor(
     private val offersRepo: IOffersRepository = OffersRepository(),
     private val advertsRepo: IAdvertsRepository = AdvertsRepository()
 ) {
-    fun getItems(page: Int): List<Item> =
-        offersRepo.getItems(page, 3) + advertsRepo.getItems(page, 1)
+    fun getFeedItems(): List<FeedItem> = offersRepo.getItems(100)
+        .mapIndexed { idx, item ->
+            when {
+                idx % 4  == 3 -> listOf(item) + advertsRepo.getItems(1)
+                else -> listOf(item)
+            }
+        }
+        .flatten()
 }

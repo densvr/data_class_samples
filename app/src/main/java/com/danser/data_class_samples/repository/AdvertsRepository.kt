@@ -1,17 +1,18 @@
 package com.danser.data_class_samples.repository
 
-import com.danser.data_class_samples.domain.Item
+import com.danser.data_class_samples.domain.FeedItem
 
 interface IAdvertsRepository {
-    fun getItems(page: Int, count: Int): List<Item.Advert>
+    fun getItems(count: Int): List<FeedItem.Advert>
 }
 
-class AdvertsRepository: IAdvertsRepository {
+class AdvertsRepository : IAdvertsRepository {
 
-    override fun getItems(page: Int, count: Int): List<Item.Advert> = listOf(
-        Item.Advert(
-            "0",
-            "Покупайте квартиры в СПб от ЛенСпецМу"
+    private var id = 0
+    
+    override fun getItems(count: Int): List<FeedItem.Advert> = (0..count).map {
+        FeedItem.Advert(
+            id = "${id++}"
         )
-    )
+    }
 }
